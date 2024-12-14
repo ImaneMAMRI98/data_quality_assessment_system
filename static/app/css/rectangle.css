@@ -1,0 +1,62 @@
+.rectangle {
+	height:160px;
+	margin-bottom:40px;
+	margin-right: 29px;	
+	left: 140px;
+	top : 50px;
+}
+
+.texte_categorie_rectangle {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:16px;
+	color:#fff;
+	margin-top: 55px;
+}
+
+
+@include media-breakpoint-down(xs)  { 
+.rectangle {
+	height:400px;
+	margin-bottom:40px;
+	margin-right: 100px;
+	margin-left: 50px;
+	left: 100px;
+	top : 50px;
+}
+
+.texte_categorie_rectangle {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:12px;
+	color:#fff;
+	margin-top: 30px;
+}
+}
+
+
+@media (min-width: 630px) and (max-width: 990.98px) { 
+.rectangle {
+	height:150px;
+	margin-bottom:40px;
+	margin-right: 250px;
+	margin-left: 50px;
+	
+	left: 100px;
+	top : 50px;
+}
+
+
+}
+
+@media (min-width: 0px) and (max-width: 630px) { 
+.rectangle {
+	height:150px;
+	margin-bottom:40px;
+	margin-right: 150px;
+	margin-left: -50px;
+	
+	left: 100px;
+	top : 50px;
+}
+
+
+}

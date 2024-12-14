@@ -1,0 +1,167 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Logiciel saas</title>
+    <link href="{% static 'app/css/navbar.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/footer.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/test_css.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <script src="{% static 'app/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'app/js/test.js' %} "></script>
+    <script src="https://raw.githubusercontent.com/javiertoledo/bootstrap-rating-input/master/src/bootstrap-rating-input.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <style>
+        .asteriskField{
+            display: none;
+        }
+        
+        form .alert ul li{
+            list-style: none;
+        }
+        form 
+        alert  ul {
+            padding:0;
+            margin:0;
+        }
+        .form-text{
+        	display: none;
+
+        }
+        .liste-media {
+    position: relative;
+    right: 50px;
+}
+.liste-media img {
+    width: 30px;
+    margin: 10px 10px;
+}
+.liste-media a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+    </style>
+
+  </head>
+  <body>
+<div class="scroll">
+    <!-- navbar -->
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" style="background-color: rgba(245, 244, 244, 0.966) ">
+      <div class="my-0 mr-md-auto font-weight-normal">
+        <a href=""><img src="{% static 'app/img/mon-logiciel-logo-2.png' %}" alt=""> </a>
+      </div>
+    
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-danger " href="{% url 'user:logout' %}" >
+          logout
+        </a>
+      {% else %}
+        <a class="btn btn-outline-danger" href="{% url 'user:login' id %}">
+          login
+        </a>
+      {% endif %}
+    </div>
+      
+<div class="row justify-content-center">
+            <div class="col-sm-5">
+                <div class="card" style="margin-top:100px;margin-bottom:50px; height: 585px;">
+                    <div class="card-body" > 
+                        <h1>Créer un compte</h1>
+                       		<form method="post">
+    						{% csrf_token %}
+    						{{form|crispy}}
+                <div class="form-check form-check-inline">
+                      <input required type="radio" class="form-check-input" id="materialInline1" name="type_utilisateur" value="Fournisseur">
+                      <label class="form-check-label" for="materialInline1">data scientiste</label>
+                </div>
+                <!-- Material inline 2 -->
+                <div class="form-check form-check-inline">
+                    <input required type="radio" class="form-check-input" id="materialInline2" name="type_utilisateur" value="Client">
+                    <label class="form-check-label" for="materialInline2">administrateur</label>
+                </div>
+                <br>
+							 <input class="btn" style="background-color: #ca3030;color:white; margin-top:15px;" type="submit" value="s'inscrir" />
+					
+
+							</form>
+							 <hr>
+                            <p>Se connecter: 
+                                <a href="{% url 'user:login' id %}" style="color: #ca3030; text-decoration:none;">
+                                Connecter</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--footer starts from here-->
+<footer class="footer">
+  <div class="headin5_amrc">
+     <div class="row">
+        <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+          <h5 class="headin5_amrc col_white_amrc pt2">A propos</h5>
+              <!--headin5_amrc-->
+             <p class="mb10">notre site web vous permetra d'evaluer votre datasets facillement et rapidement.vous devez juste vous inscrire et connecter a notre plateforme EVAAL</p>
+        </div>
+        <div class=" col-sm-4 col-md  col-6 col">
+          <h5 class="headin5_amrc col_white_amrc pt2">Informations</h5>
+<!--headin5_amrc-->
+<ul class="footer_ul_amrc">
+<li><a href="">Contact</a></li>
+<li><a href="">Evaluer votre datasets</a></li>
+</ul>
+<!--footer_ul_amrc ends here-->
+</div>
+
+
+<div class=" col-sm-4 col-md  col-6 col">
+<h5 class="headin5_amrc col_white_amrc pt2">Reseaux sociaux</h5>
+<!--headin5_amrc-->
+<ul class="liste-media">
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-facebook-48.png' %}" alt="icones réseaux sociaux"> 
+    Facebook/monsite</a></li>
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-instagram-64.png' %}" alt="icones réseaux sociaux">
+    Instagram/stuff</a></li>
+  <li><a href="#">
+     <img src="{% static 'app/img/icons8-twitter-48.png' %}" alt="icones réseaux sociaux">
+    Twitter/lorem</a></li>
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-github-50.png' %}" alt="icones réseaux sociaux">
+    Github/HelloWorld</a></li>
+</ul>
+<!--footer_ul_amrc ends here-->
+</div>
+
+
+
+</div>
+</div>
+
+</footer>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'app/js/jquery-3.3.1.slim.min.js' %}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="{% static 'app/js/popper.min.js' %}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="{% static 'app/js/bootstrap.min.js' %}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+</body>
+</html>
+
+
+

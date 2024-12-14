@@ -1,0 +1,331 @@
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>site EVAAL</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <link href="{% static 'app/css/card.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/navbar.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/footer.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/test_css.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <script src="{% static 'app/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'app/js/test.js' %} "></script>
+    <script src="https://raw.githubusercontent.com/javiertoledo/bootstrap-rating-input/master/src/bootstrap-rating-input.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+
+    <style>
+      .contents 
+{
+  margin-top: 20px;
+  margin-left: 10px;
+	display: grid;
+	grid-template-columns : 20% 80%;
+	
+}
+
+.sidemen button {
+	display: block;
+	width : 100%;
+	height : 65px;
+	background-color : #ca3030;
+	border : 1px solid #830202;	
+	padding : 10px 0 10px 10px;
+	font-size: 20px;
+	overflow : hidden;
+	text-align: left;
+
+}
+.sidemen button:hover {
+	background-color : #9c1818;
+}
+
+
+
+table{
+  margin: auto;
+}
+th,td{
+
+border: 1px solid #ddd;
+  padding: 8px;
+}
+.sidemen > .active{
+  background-color : #d88383;
+}
+.sidemen > button > a{
+  color: black;
+  text-decoration: none;
+}
+ tr:nth-child(even){background-color: #f2f2f2;}
+
+ tr:hover {background-color: #ddd;}
+ th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#ca3030;
+  color: white;
+}
+col-md-3{
+    flex: 0 0 10%;
+    max-width: 25%;
+
+}
+.btn-lg{
+    background-color: #f2f2f2;
+    color: black;
+    width: 95%;
+
+}
+.container-fluid{
+
+ margin-left: 16%;
+ position:fixed;
+margin-right: 16%;
+}
+th,td{
+
+border: 1px solid #ddd;
+  padding: 8px;
+}
+
+ tr:nth-child(even){background-color: #f2f2f2;}
+
+ tr:hover {background-color: #ddd;}
+ th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#ca3030;
+  color: white;
+}
+legend {
+  margin-left: 80px;
+}
+table{
+  margin-bottom: 20px;
+  margin-left: 100px;
+height: 100px;}
+
+.btn-outline-danger{
+    margin:10px;
+    width: 100px;}
+.hide {
+  display: none;
+  color:blue;
+  background-color:#f2f2f2;
+}
+.myDIV:hover + .hide {
+  display:block;
+  color: black;
+  width: 95%;
+}
+.aside{margin-bottom:500px;}
+</style>
+
+
+</style>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" style="background-color: rgba(245, 245, 245, 0.877) ">
+        <div class="my-0 mr-md-auto font-weight-normal">
+          <a href="{% url  'app:index' %}""><img src="{% static 'app/img/mon-logiciel-logo-2.png' %}" alt=""> </a>
+        </div>
+        <nav class="my-2 my-md-0 mr-md-3">
+         
+         
+          
+        </nav>
+        <button class="btn btn-outline-danger" href=""><i class="fa fa-home"> Acceuil</i></button>
+        <button class="btn btn-outline-danger"><i class="fa fa-folder"> Datasets</i></button>
+        {% if user.is_authenticated %}
+          <a class="btn btn-outline-danger " href="{% url 'user:logout' %}">
+            logout
+          </a>
+        {% else %}
+          <a class="btn btn-outline-danger" href="{% url 'user:login' 0 %}">
+           login
+          </a>
+        {% endif %}
+        
+         </div> 
+
+       
+         <div class="contents">
+          <div class="sidemen">
+            <button><a href="{% url  'app:catalog2' %}">Informations sur le fichier</a></button>
+            <button class="active"><a href="{% url  'app:catalog' %}"> Règles syntaxiques</a> </button>
+            <button>Règles semantiques</button>
+            <button >Evaluation</button>
+ 
+         </div>
+<!--CODE HERE-->
+<div >
+{% csrf_token %}
+{% for dt in datas%}
+<!--lines-->
+
+<!--strings-->
+{% if dt.1 == "string" %}
+<table>
+  <legend>
+    {{dt.0}} 
+   </legend>
+<thead>
+  <tr>
+    <th>type</th>
+    <th>Coefficient</th>
+    <th>exression regulière</th>
+    <th>longueur minimal</th>
+    <th>longeur maximal</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+{% for d in dt%}
+{% if forloop.counter != 1 %}
+<td>
+{{d}}
+</td>
+{% endif %}
+{% endfor %}
+</tr>
+</tbody>
+
+</table>
+
+{% endif %}
+
+<!--ints-->
+
+{% if dt.1 == "int" %}
+<table>
+  <legend>
+    {{dt.0}} 
+   </legend>
+<thead>
+  <tr>
+    <th>type</th>
+    <th>Coefficient</th>
+    <th>valeur minimal</th>
+    <th>valeur maximal</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+{% for d in dt%}
+{% if forloop.counter != 1 %}
+<td>
+{{d}}
+</td>
+{% endif %}
+{% endfor %}
+</tr>
+</tbody>
+
+</table>
+
+{% endif %}
+
+<!--floats-->
+
+{% if dt.1 == "float" %}
+<table>
+  <legend>
+    {{dt.0}} 
+   </legend>
+<thead>
+  <tr>
+    <th>type</th>
+    <th>Coefficient</th>
+    <th>valeur minimal</th>
+    <th>valeur maximal</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+{% for d in dt%}
+{% if forloop.counter != 1 %}
+<td>
+{{d}}
+</td>
+{% endif %}
+{% endfor %}
+</tr>
+</tbody>
+
+</table>
+
+{% endif %}
+{% endfor %}
+
+
+</div>
+</div>
+<footer class="footer">
+    <div class="headin5_amrc">
+       <div class="row">
+          <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+            <h5 class="headin5_amrc col_white_amrc pt2">A propos</h5>
+                <!--headin5_amrc-->
+               <p class="mb10">notre site web vous permetra d'evaluer votre datasets facillement et rapidement.vous devez juste vous inscrire et connecter a notre plateforme EVAAL</p>
+          </div>
+          <div class=" col-sm-4 col-md  col-6 col">
+            <h5 class="headin5_amrc col_white_amrc pt2">Informations</h5>
+  <!--headin5_amrc-->
+  <ul class="footer_ul_amrc">
+  <li><a href="">Contact</a></li>
+  <li><a href="{% url 'app:evaluer' %}">Evaluer votre datasets</a></li>
+  </ul>
+  <!--footer_ul_amrc ends here-->
+  </div>
+  
+  
+  <div class=" col-sm-4 col-md  col-6 col">
+  <h5 class="headin5_amrc col_white_amrc pt2">Reseaux sociaux</h5>
+  <!--headin5_amrc-->
+  <ul class="liste-media">
+    <li><a href="#">
+      <img src="{% static 'app/img/icons8-facebook-48.png' %}" alt="icones réseaux sociaux"> 
+      Facebook/monsite</a></li>
+    <li><a href="#">
+      <img src="{% static 'app/img/icons8-instagram-64.png' %}" alt="icones réseaux sociaux">
+      Instagram/stuff</a></li>
+    <li><a href="#">
+       <img src="{% static 'app/img/icons8-twitter-48.png' %}" alt="icones réseaux sociaux">
+      Twitter/lorem</a></li>
+    <li><a href="#">
+      <img src="{% static 'app/img/icons8-github-50.png' %}" alt="icones réseaux sociaux">
+      Github/HelloWorld</a></li>
+  </ul>
+  <!--footer_ul_amrc ends here-->
+  </div>
+  
+  
+  
+  </div>
+  </div>
+  
+  </footer>
+  
+  </body>
+</html>

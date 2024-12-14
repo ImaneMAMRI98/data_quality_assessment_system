@@ -1,0 +1,17 @@
+.card{
+    height: 190px;
+    width: 880px;
+    top: 10px;
+    margin-left: 390px;
+    margin-right: 60px;
+    margin-top: 25px;
+}
+.card-text{
+     margin-right: 350px;
+    margin-top: -50px;
+}
+.alignleft1{
+    margin-left: 10px;
+    margin-right: 55px;
+    float:left;
+}

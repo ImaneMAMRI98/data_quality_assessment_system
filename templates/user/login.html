@@ -1,0 +1,125 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Logiciel Saas</title>
+    <link href="{% static 'user/css/navbar.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'user/css/footer.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'user/css/header.css' %}" rel="stylesheet" id="test-css">
+     <link href="{% static 'user/css/rectangle.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'user/css/test_css.css' %}" rel="stylesheet" id="test-css">
+    
+    <link href="{% static 'user/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <script src="{% static 'user/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'user/js/test.js' %} "></script>
+  
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+      .liste-media {
+    position: relative;
+    right: 50px;
+}
+.liste-media img {
+    width: 30px;
+    margin: 10px 10px;
+}
+.liste-media a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+    .scroll{  
+  overflow:hidden;
+}
+  .card{
+    transition: 1s;
+  }
+  .card:hover{
+    transform:scale(1.05);
+  }
+  .inner{
+    overflow: hidden;
+
+  }
+  .inner img{
+    transition: all 1.5
+  }
+  .inner:hover img{
+    transform: scale(1.1);
+  }
+    </style>
+  
+
+  </head>
+  <body>
+    <div class="scroll">
+<!-- navbar -->
+        
+      {% if user.is_authenticated %}
+          {% if user.username == 'admin' %}
+            <script>
+              window.location.replace('http://127.0.0.1:8000/admin/');
+            </script>
+          {% else %}
+
+            <div class='container' style="margin-bottom: 600px;">
+              <p>Vous êtes connecté,<b> {{ user.username }} </b>!</p>
+            </div>
+          {% endif %}
+
+      {% else %}
+                        
+        <div class="row justify-content-center">
+                <div class="col-sm-5">
+                  <div class="card" style="margin-top:100px;margin-bottom:50px; ">
+                    <div class="card-body" > 
+                        <h1>Se connecter</h1>
+                            {% if error %}
+                              <div class="alert alert-danger" role="alert">
+                                Saisissez un nom d'utilisateur et un mot de passe valides. Remarquez que chacun de ces champs est sensible à la casse (différenciation des majuscules/minuscules). 
+                              </div>
+                            {% endif %}
+                              <form method="post" action="">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                              
+                                <input class="btn" style="background-color: #ca3030;color:white" type="submit" value="Se connecter"/>
+
+                              </form>
+                            <hr>
+                            <p>Créer un compte: 
+                                <a href="{% url 'user:signup' id %}" style="color: #ca3030; text-decoration:none;">S'inscrire
+                                </a>
+                                
+                            </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  {% endif %}
+                   
+
+        
+  {% include "footer.html" %}
+
+</body>
+</html>
+
+
+
+
+
+
+ 

@@ -1,0 +1,260 @@
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>site EVAAL</title>
+
+    
+    <link href="{% static 'app/css/card.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/navbar.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/footer.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/test_css.css' %}" rel="stylesheet" id="test-css">
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <script src="{% static 'app/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'app/js/test.js' %} "></script>
+    <script src="https://raw.githubusercontent.com/javiertoledo/bootstrap-rating-input/master/src/bootstrap-rating-input.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+
+    <style>
+      .file-upload {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.file-upload__input {
+  display: none;
+}
+
+.file-upload__button {
+  -webkit-appearance: none;
+  background: #009879;
+  border: 2px solid #00745d;
+  border-radius: 4px;
+  outline: none;
+  padding: 0.5em 0.8em;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: #ffffff;
+  font-size: 1em;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.file-upload__button:active {
+  background: #00745d;
+}
+
+.file-upload__label {
+  max-width: 100px;
+  font-size: 0.95em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Quicksand", sans-serif;
+}
+
+iframe.note-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw!important;
+  height: 100vh!important;
+  z-index: 4000;
+}
+.container-fluid{
+ 
+ margin-left: 16%;
+margin-right: 16%;
+}
+form {
+    width: 60%;
+    margin: 30px auto;
+    padding: 30px;
+    box-shadow: 0 0 14px 2px #efeaea;
+    background: rgba(234, 234, 234, 0.6);
+    border: 1px solid #ececec;
+}
+
+form fieldset {
+    border: 2px solid #85a3a5;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+form fieldset legend {
+    border: 2px solid #85a3a5;
+    padding: 10px 20px;
+    font-size: 21px;
+    font-weight: bold;
+}
+.liste-media {
+    position: relative;
+    right: 50px;
+}
+.liste-media img {
+    width: 30px;
+    margin: 10px 10px;
+}
+.liste-media a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.card .filtre_annimation{
+    transition: 1s;
+  }
+  .card:hover{
+    transform:scale(1.05);
+  }
+  .filtre_annimation:hover{
+    transform:scale(1.05);
+  }
+</style>
+  </head>
+  <body>
+
+<!--CODE HERE-->
+<form method="POST" >
+  <fieldset>
+    <legend>Amélioration des données</legend>
+
+  {% csrf_token %}
+
+
+  <div class="card-body"  > 
+     
+        
+<b>Exactitude</b> <br> <hr>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="ver" value = "vs1" > 
+  <label class="form-check-label" for="ver">Supprimer les erreurs </label> 
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="ver" value = "vs2" > 
+    <label class="form-check-label" for="ver"> Ignorer les erreurs</label> 
+    </div>
+
+
+      <hr>
+<b>Validité</b> <br> <hr>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="Format" value = "f1" > 
+  <label class="form-check-label" for="Format">Supprimer les erreurs </label> 
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="Format" value = "f2" > 
+    <label class="form-check-label" for="Format"> Ignorer les erreurs</label> 
+    </div>
+
+      
+  
+<hr>
+<b>Complétude </b> <br> <hr>
+ <div class="form-check">
+  <input class="form-check-input" type="checkbox" name="nulles" value = "v1" > 
+  <label class="form-check-label" for="nulles">Supprimer les erreurs </label> 
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="nulles" value = "v2" > 
+    <label class="form-check-label" for="nulles"> Ignorer les erreurs</label> 
+    </div>
+ 
+      <hr>
+<b>Cohèrence </b> <br> <hr>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="doub" value = "d1" > 
+  <label class="form-check-label" for="doub">Supprimer les erreurs </label> 
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="doub" value = "d2" > 
+    <label class="form-check-label" for="doub"> Ignorer les erreurs</label> 
+    </div>
+ 
+
+
+
+
+</div>
+<br>
+<button class="save btn btn-default" type="submit" >Save</button>
+
+
+</div>
+
+</fieldset>
+</form>
+
+
+
+
+
+
+ <footer class="footer">
+  <div class="headin5_amrc">
+     <div class="row">
+        <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+          <h5 class="headin5_amrc col_white_amrc pt2">A propos</h5>
+              <!--headin5_amrc-->
+             <p class="mb10">notre site web vous permetra d'evaluer votre datasets facillement et rapidement.vous devez juste vous inscrire et connecter a notre plateforme EVAAL</p>
+        </div>
+        <div class=" col-sm-4 col-md  col-6 col">
+          <h5 class="headin5_amrc col_white_amrc pt2">Informations</h5>
+<!--headin5_amrc-->
+<ul class="footer_ul_amrc">
+<li><a href="">Contact</a></li>
+<li><a href="{% url 'app:evaluer' %}">Evaluer votre datasets</a></li>
+</ul>
+<!--footer_ul_amrc ends here-->
+</div>
+
+
+<div class=" col-sm-4 col-md  col-6 col">
+<h5 class="headin5_amrc col_white_amrc pt2">Reseaux sociaux</h5>
+<!--headin5_amrc-->
+<ul class="liste-media">
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-facebook-48.png' %}" alt="icones réseaux sociaux"> 
+    Facebook/monsite</a></li>
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-instagram-64.png' %}" alt="icones réseaux sociaux">
+    Instagram/stuff</a></li>
+  <li><a href="#">
+     <img src="{% static 'app/img/icons8-twitter-48.png' %}" alt="icones réseaux sociaux">
+    Twitter/lorem</a></li>
+  <li><a href="#">
+    <img src="{% static 'app/img/icons8-github-50.png' %}" alt="icones réseaux sociaux">
+    Github/HelloWorld</a></li>
+</ul>
+<!--footer_ul_amrc ends here-->
+</div>
+
+
+
+</div>
+</div>
+
+</footer>
+
+
+
+</body>
+</html>

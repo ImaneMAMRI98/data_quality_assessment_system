@@ -1,0 +1,31 @@
+.filtre_categorie{
+	background:rgba(245, 245, 245, 0.877);
+}
+
+.filtre_categorie{
+	padding-bottom:10px;
+    padding-top:10px;
+    padding-right:0px;
+    margin-top: -40px;
+    
+}
+.filtre_categorie a{
+	
+	font-size:0.85em;
+	color:#ca3030;
+	padding:1px 8px;
+	margin:5px;
+	border-radius:10px;
+	border:1px solid #ca3030;  
+}
+
+.filtre_categorie a:HOVER{
+	color:white;
+	background:#ca3030;
+}
+
+.filtre_categorie a.selected{
+	color:white;
+	background:#ca3030;
+}
+
